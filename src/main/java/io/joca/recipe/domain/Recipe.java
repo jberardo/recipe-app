@@ -11,6 +11,10 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+/**
+ * @author Joao Berardo
+ * @since Feb 10 2019
+ */
 @Entity
 public class Recipe {
 	

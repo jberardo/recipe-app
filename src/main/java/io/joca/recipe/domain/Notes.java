@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
+/**
+ * @author Joao Berardo
+ * @since Feb 10 2019
+ */
 @Entity
 public class Notes {
 
