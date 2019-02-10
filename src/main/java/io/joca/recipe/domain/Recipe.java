@@ -1,11 +1,14 @@
 package io.joca.recipe.domain;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -31,6 +34,9 @@ public class Recipe {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notes ntoes;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+	private Set<Ingredient> ingredients;
 	
 	public Long getId() {
 		return id;
@@ -110,5 +116,13 @@ public class Recipe {
 
 	public void setNtoes(Notes ntoes) {
 		this.ntoes = ntoes;
+	}
+
+	public Set<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(Set<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 }
