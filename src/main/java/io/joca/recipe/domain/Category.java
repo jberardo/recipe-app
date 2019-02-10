@@ -8,6 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb 10 2019
+ *
+ */
 @Entity
 public class Category {
 
