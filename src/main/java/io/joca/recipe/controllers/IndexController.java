@@ -1,14 +1,10 @@
 package io.joca.recipe.controllers;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import io.joca.recipe.domain.Category;
-import io.joca.recipe.domain.UnitOfMeasure;
-import io.joca.recipe.repositories.CategoryRepository;
-import io.joca.recipe.repositories.UnitOfMeasureRepository;
+import io.joca.recipe.services.RecipeService;
 
 /**
  * @author Joao Berardo
@@ -17,28 +13,17 @@ import io.joca.recipe.repositories.UnitOfMeasureRepository;
 @Controller
 public class IndexController {
 	
-	private CategoryRepository categoryRepository;
-	private UnitOfMeasureRepository uomRepository;
+	private RecipeService recipeService;
 	
-	public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository uomRepository) {
+	public IndexController(RecipeService recipeService) {
 		super();
-		this.categoryRepository = categoryRepository;
-		this.uomRepository = uomRepository;
+		this.recipeService = recipeService;
 	}
 
 	@RequestMapping({ "", "/", "/index" })
-	public String getIndexPage() {
-		
-		Optional<Category> optCat = categoryRepository.findByDescription("Itadlian");
-		Optional<UnitOfMeasure> optUom = uomRepository.findByDescription("Teaspoon");
-		
-		optCat.ifPresent(c -> {
-			System.out.println("cat id: " + c.getId());			
-		});
-		
-		optUom.ifPresent(uom -> {
-			System.out.println("uom: " + uom.getId());			
-		});
+	public String getIndexPage(Model model) {
+
+		model.addAttribute("recipes", recipeService.getRecipes());
 		
 		return "index";
 	}
