@@ -5,10 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
 /**
  * @author Joao Berardo
  * @since Feb 10 2019
  */
+@Data
 @Entity
 public class UnitOfMeasure {
 

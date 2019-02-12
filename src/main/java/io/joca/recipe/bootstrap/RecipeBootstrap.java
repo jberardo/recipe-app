@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -18,7 +20,9 @@ import io.joca.recipe.domain.UnitOfMeasure;
 import io.joca.recipe.repositories.CategoryRepository;
 import io.joca.recipe.repositories.RecipeRepository;
 import io.joca.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -34,12 +38,16 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 	}
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
+    	log.info("Loading bootstrap data...");
         recipeRepository.saveAll(getRecipes());
     }
 
     private List<Recipe> getRecipes() {
-
+    	
+    	log.debug("Getting recipes...");
+    	
         List<Recipe> recipes = new ArrayList<>(2);
 
         //get UOMs
@@ -87,6 +95,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure pintUom = pintUomOptional.get();
         UnitOfMeasure cupsUom = cupsUomOptional.get();
 
+        log.debug("Loaded UOMs...");
+        
         //get Categories
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
 
@@ -103,6 +113,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Category americanCategory = americanCategoryOptional.get();
         Category mexicanCategory = mexicanCategoryOptional.get();
 
+        log.debug("Loaded categories...");
+        
         //Yummy Guac
         Recipe guacRecipe = new Recipe();
         guacRecipe.setDescription("Perfect Guacamole");
@@ -131,7 +143,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
         guacNotes.setRecipe(guacRecipe);
-        guacRecipe.setNtoes(guacNotes);
+        guacRecipe.setNotes(guacNotes);
 
         guacRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guacRecipe));
         guacRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal(".5"), teapoonUom, guacRecipe));
@@ -178,7 +190,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ");
         tacoNotes.setRecipe(tacosRecipe);
-        tacosRecipe.setNtoes(tacoNotes);
+        tacosRecipe.setNotes(tacoNotes);
 
 
         tacosRecipe.getIngredients().add(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom, tacosRecipe));
