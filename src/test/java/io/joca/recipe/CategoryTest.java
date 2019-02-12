@@ -12,6 +12,11 @@ import org.junit.Test;
 import io.joca.recipe.domain.Category;
 import io.joca.recipe.domain.Recipe;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb 12 2019
+ */
 public class CategoryTest {
 
 	Category category;

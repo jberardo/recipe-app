@@ -17,6 +17,11 @@ import io.joca.recipe.domain.Recipe;
 import io.joca.recipe.repositories.RecipeRepository;
 import io.joca.recipe.services.RecipeServiceImpl;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb 12 2019
+ */
 public class RecipeServiceImplTest {
 
 	RecipeServiceImpl recipeService;
