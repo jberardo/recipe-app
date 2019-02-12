@@ -1,4 +1,4 @@
-package io.joca.recipe;
+package io.joca.recipe.domain;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
