@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.joca.recipe;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,4 @@ public class RecipeApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
-
