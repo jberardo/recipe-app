@@ -5,16 +5,8 @@
 		<meta charset="UTF-8">
 		<title>Recipe Home</title>
 	
-		<!-- Latest compiled and minified CSS -->
-		<!-- 
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
-		 -->
-		 <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<!-- 
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script>		
-		 -->
 		<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
@@ -35,22 +27,15 @@
 									<tr>
 										<th>ID</th>
 										<th>Description</th>
+										<th>View</th>
 									</tr>
 									</thead>
-									
-									<tr th:remove="all">
-										<td th:text="${recipe.id}">ID</td>
-										<td th:text="${recipe.description}">description</td>
-									</tr>
-									
-									<tr th:remove="all">
-										<td th:text="${recipe.id}">ID2</td>
-										<td th:text="${recipe.description}">description2</td>
-									</tr>
-									
 									<tr th:each="recipe : ${recipes}">
 										<td th:text="${recipe.id}"></td>
 										<td th:text="${recipe.description}"></td>
+										<td>
+											<a href="#" th:href="@{'/recipe/' + ${recipe.id}}">View</a>
+										</td>
 									</tr>
 								</table>
 							</div>
