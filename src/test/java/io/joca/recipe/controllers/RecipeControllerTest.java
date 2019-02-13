@@ -86,5 +86,14 @@ public class RecipeControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/recipeform"))
                 .andExpect(model().attributeExists("recipe"));
-}
+    }
+    
+    @Test
+    public void testDeleteAction() throws Exception {
+        mock.perform(get("/recipe/1/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/"));
+
+        verify(service, times(1)).deleteById(anyLong());
+    }
 }
