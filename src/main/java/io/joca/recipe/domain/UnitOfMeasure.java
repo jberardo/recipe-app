@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import lombok.Data;
 
 /**
+ * 
  * @author Joao Berardo
- * @since Feb 10 2019
+ * @since Feb. 10, 2019
+ *
  */
 @Data
 @Entity

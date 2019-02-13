@@ -19,6 +19,12 @@ import io.joca.recipe.commands.RecipeCommand;
 import io.joca.recipe.domain.Recipe;
 import io.joca.recipe.services.RecipeService;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb. 12, 2019
+ *
+ */
 public class RecipeControllerTest {
 
 	@Mock

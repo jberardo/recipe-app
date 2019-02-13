@@ -13,6 +13,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import io.joca.recipe.domain.UnitOfMeasure;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb. 10, 2019
+ *
+ */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {

@@ -8,7 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * 
  * @author Joao Berardo
- * @since Feb 12 2019
+ * @since Feb. 12, 2019
+ *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 
  * @author Joao Berardo
- * @since Feb 10 2019
+ * @since Feb. 10, 2019
  *
  */
 @Data

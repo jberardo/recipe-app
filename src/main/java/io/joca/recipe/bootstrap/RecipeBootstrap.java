@@ -22,6 +22,12 @@ import io.joca.recipe.repositories.RecipeRepository;
 import io.joca.recipe.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb. 10, 2019
+ *
+ */
 @Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {

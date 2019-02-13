@@ -20,6 +20,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+/**
+ * 
+ * @author Joao Berardo
+ * @since Feb. 13, 2019
+ *
+ */
 public class IngredientControllerTest {
     @Mock
     RecipeService recipeService;

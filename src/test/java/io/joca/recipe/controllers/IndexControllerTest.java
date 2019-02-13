@@ -26,7 +26,8 @@ import io.joca.recipe.services.RecipeService;
 /**
  * 
  * @author Joao Berardo
- * @since Feb 12 2019
+ * @since Feb. 12, 2019
+ *
  */
 public class IndexControllerTest {
 

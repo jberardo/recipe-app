@@ -21,7 +21,8 @@ import io.joca.recipe.services.RecipeServiceImpl;
 /**
  * 
  * @author Joao Berardo
- * @since Feb 12 2019
+ * @since Feb. 12, 2019
+ *
  */
 public class RecipeServiceImplTest {
 

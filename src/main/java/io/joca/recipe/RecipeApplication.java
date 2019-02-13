@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
+ * 
  * @author Joao Berardo
- * @since Feb 10 2019
+ * @since Feb. 10, 2019
+ *
  */
 @SpringBootApplication
 public class RecipeApplication {
