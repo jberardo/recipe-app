@@ -1,5 +1,13 @@
 package io.joca.recipe.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.joca.recipe.commands.RecipeCommand;
 import io.joca.recipe.services.ImageService;
 import io.joca.recipe.services.RecipeService;
 
@@ -40,5 +49,22 @@ public class ImageController {
         imageService.saveImageFile(Long.valueOf(id), file);
 
         return "redirect:/recipe/" + id + "/show";
+    }
+    
+    @GetMapping("/recipe/{id}/recipeimage")
+    public void renderImageFromDb(@PathVariable String id, HttpServletResponse response) throws IOException {
+    	
+    	RecipeCommand command = recipeService.findCommandById(Long.valueOf(id));
+    	
+    	byte[] byteArray = new byte[command.getImage().length];
+    	int i = 0;
+    	
+    	for (Byte wrappedByte : command.getImage()) {
+    		byteArray[i++] = wrappedByte; // auto unboxing
+    	}
+    	
+    	response.setContentType("image/jpeg");
+    	InputStream is = new ByteArrayInputStream(byteArray);
+    	IOUtils.copy(is, response.getOutputStream());
     }
 }
