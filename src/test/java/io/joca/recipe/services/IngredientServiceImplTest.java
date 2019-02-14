@@ -6,11 +6,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import io.joca.recipe.commands.IngredientCommand;
+import io.joca.recipe.converters.IngredientCommandToIngredient;
 import io.joca.recipe.converters.IngredientToIngredientCommand;
+import io.joca.recipe.converters.UnitOfMeasureCommandToUnitOfMeasure;
 import io.joca.recipe.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import io.joca.recipe.domain.Ingredient;
 import io.joca.recipe.domain.Recipe;
 import io.joca.recipe.repositories.RecipeRepository;
+import io.joca.recipe.repositories.UnitOfMeasureRepository;
 
 import java.util.Optional;
 
@@ -19,23 +22,29 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 public class IngredientServiceImplTest {
+	
     private final IngredientToIngredientCommand ingredientToIngredientCommand;
+    private final IngredientCommandToIngredient ingredientCommandToIngredient;
 
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    UnitOfMeasureRepository uomRepository;
+    
     IngredientService ingredientService;
 
     //init converters
     public IngredientServiceImplTest() {
         this.ingredientToIngredientCommand = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient, recipeRepository, uomRepository);
     }
 
     @Test
