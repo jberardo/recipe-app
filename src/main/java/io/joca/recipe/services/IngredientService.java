@@ -1,9 +1,6 @@
 package io.joca.recipe.services;
 
-import java.util.Set;
-
 import io.joca.recipe.commands.IngredientCommand;
-import io.joca.recipe.domain.Ingredient;
 
 /**
  * 
@@ -14,4 +11,5 @@ import io.joca.recipe.domain.Ingredient;
 public interface IngredientService {
 	IngredientCommand findByRecipeIdAndIngredientId(Long recipeId, Long id);
 	IngredientCommand saveIngredientCommand(IngredientCommand command);
+	void deleteById(Long recipeId, Long idToDelete);
 }
