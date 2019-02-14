@@ -12,7 +12,6 @@ import io.joca.recipe.domain.Recipe;
  *
  */
 public interface RecipeService {
-	
 	public Set<Recipe> getRecipes();
 	public Recipe findById(Long id);
 	RecipeCommand findCommandById(Long id);
