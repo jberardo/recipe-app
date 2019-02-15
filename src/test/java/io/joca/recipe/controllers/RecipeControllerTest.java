@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import io.joca.recipe.commands.RecipeCommand;
 import io.joca.recipe.domain.Recipe;
+import io.joca.recipe.exceptions.NotFoundException;
 import io.joca.recipe.services.RecipeService;
 
 /**
@@ -54,6 +55,17 @@ public class RecipeControllerTest {
 			.andExpect(view().name("recipe/show"))
 			.andExpect(model().attributeExists("recipe"));
 	}
+	
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
+
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        when(service.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mock.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound());
+    }
 	
     @Test
     public void testGetNewRecipeForm() throws Exception {

@@ -12,6 +12,7 @@ import io.joca.recipe.commands.RecipeCommand;
 import io.joca.recipe.converters.RecipeCommandToRecipe;
 import io.joca.recipe.converters.RecipeToRecipeCommand;
 import io.joca.recipe.domain.Recipe;
+import io.joca.recipe.exceptions.NotFoundException;
 import io.joca.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,7 +52,8 @@ public class RecipeServiceImpl implements RecipeService {
 		Optional<Recipe> recipe = recipeRepository.findById(id);
 		
 		if (!recipe.isPresent()) {
-			throw new RuntimeException("Recipe not found");
+			throw new NotFoundException("Recipe Not Found");
+			//throw new RuntimeException("Recipe not found");
 		}
 		
 		return recipe.get();

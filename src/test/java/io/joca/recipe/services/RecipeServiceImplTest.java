@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import io.joca.recipe.converters.RecipeCommandToRecipe;
 import io.joca.recipe.converters.RecipeToRecipeCommand;
 import io.joca.recipe.domain.Recipe;
+import io.joca.recipe.exceptions.NotFoundException;
 import io.joca.recipe.repositories.RecipeRepository;
 import io.joca.recipe.services.RecipeServiceImpl;
 
@@ -81,6 +82,17 @@ public class RecipeServiceImplTest {
 		verify(recipeRepository, times(1)).findAll();
 	}
 	
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        //should go boom
+    }
 
     @Test
     public void testDeleteById() throws Exception {
