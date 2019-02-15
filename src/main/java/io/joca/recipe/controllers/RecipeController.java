@@ -88,19 +88,4 @@ public class RecipeController {
     	
     	return mav;
     }
-    
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView handleBadRequest(Exception ex) {
-    	
-    	log.error("Id must be a valid number");
-    	log.error(ex.getMessage());
-    	
-    	ModelAndView mav = new ModelAndView();
-
-    	mav.setViewName("400error");
-    	mav.addObject("ex", ex);
-    	
-    	return mav;
-    }
 }
