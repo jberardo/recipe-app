@@ -98,7 +98,7 @@ public class RecipeController {
     	
     	ModelAndView mav = new ModelAndView();
 
-    	mav.setViewName("404error");
+    	mav.setViewName("400badRequest");
     	mav.addObject("ex", ex);
     	
     	return mav;
